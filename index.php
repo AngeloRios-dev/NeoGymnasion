@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="bg-secondary">
+<body class="bg-dark">
     <header> <!-- seccion header -->
         <!-- barra de navegacion -->
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
@@ -109,7 +109,7 @@
 </div> <!-- END carousel section -->
 
     <!-- Choose Your Destiny Section Begin -->
-    <section class="bg-dark py-5">
+    <section class="py-5">
         <div class="container my-5">
             <div class="row">
                 <div class="col-lg-12 mb-5">
@@ -141,6 +141,75 @@
         </div>
     </section> 
     <!-- Choose Your Destiny Section End -->
+
+    <!-- Classes section begin -->
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-12 my-5">
+                    <div class="section-title text-center text-uppercase text-white">
+                        <span class="text-primary">Clases</span>
+                        <h2>Lo que podemos ofrecerte</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="card col-lg-4 col-md-6 bg-secondary">
+                    <img src="resources/img/classes/class-1.jpg" class="car-img-top" alt="mujer tomando medidas">
+                    <div class="card-body">
+                        <h5 class="card-title">Entrenamiento Personalizado</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis!</p>
+                        <a href="#" class="btn btn-primary">Ver mas</a>
+                    </div>
+                </div>
+
+                <div class="card col-lg-4 col-md-6 bg-secondary">
+                    <img src="resources/img/classes/class-2.jpg" alt="Mujer haciendo estiramientos" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Mejora tu flexibilidad</h5>
+                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, optio?</p>
+                        <a href="#" class="btn btn-primary">Ver mas</a>
+                    </div>
+                </div>
+
+                <div class="card col-lg-4 col-md-6 bg-secondary">
+                    <img src="resources/img/classes/class-3.jpg" alt="Clase grupal" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Clases Grupales</h5>
+                        <p class="card-tex">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis!</p>
+                        <a href="#" class="btn btn-primary">Ver mas</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+
+                <div class="row d-flex justify-content-center">
+                <div class="card col-lg-6 col-md-6 bg-secondary">
+                    <img src="resources/img/classes/class-4.jpg" alt="Hombre levantando pesas" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="cart-title">Entrenamientos de fuerza</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis!</p>
+                        <a href="#" class="btn btn-primary">Ver mas</a>
+                    </div>
+                </div>
+
+                <div class="card col-lg-6 col-md-6 bg-secondary">
+                    <img src="resources/img/classes/class-5.jpg" alt="Clase de yoga" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Yoga</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officiis!</p>
+                        <a href="#" class="btn btn-primary">Ver mas</a>
+                    </div>
+                </div>
+    
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Classes section end -->
     
 
     <footer class="container">
