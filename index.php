@@ -9,12 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?> | NeoGymnasion</title>
 
-    <!-- css styles using bootstrap -->
+    <!-- CSS styles using bootstrap -->
     <link rel="stylesheet" href="resources/css/bootstrap.css">
-    <!-- Iconos Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body class="bg-dark">
+<body class="bg-secondary">
     <header> <!-- seccion header -->
         <!-- barra de navegacion -->
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
@@ -85,8 +86,8 @@
             <div class="row carousel-caption">
                 <div class="col-lg-12">
                     <div class="text-uppercase">
-                        <span>Entrena como un guerrero</span>
-                        <h1>forja tu cuerpo, <strong class="text-primary">sé imparable</strong>.</h1>
+                        <span>Desarrolla tu mente como un estratega</span>
+                        <h1>fortalece tu esp&iacute;ritu, <strong class="text-primary">alcanza la grandeza</strong>.</h1>
                         <a href="#" class="btn btn-primary">Get info</a>
                     </div>
                 </div>
@@ -107,11 +108,39 @@
 
 </div> <!-- END carousel section -->
 
-    <!-- ChoseUs Section Begin -->
-    <section>
-        
-    </section>
-    <!-- ChoseUs Section End -->
+    <!-- Choose Your Destiny Section Begin -->
+    <section class="bg-dark py-5">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-12 mb-5">
+                    <div class="section-title text-white text-uppercase text-center">
+                        <span class="text-primary">Elige tu destino</span>
+                        <h2>Supera tus l&iacute;mites</h2>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <h3 class="text-white">Deportes de Combate</h3>
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h3 class="text-white">Entrenamiento Personalizado</h3>
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h3 class="text-white">Entrenamiento Personalisado</h3>
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h3 class="text-white">Tu mente, tu templo</h3>
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore facilisis.</p>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <!-- Choose Your Destiny Section End -->
     
 
     <footer class="container">
