@@ -1,0 +1,19 @@
+.set-bg {
+    background: url('../img/banner-bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+
+.appointment-section {
+	height: 550px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
