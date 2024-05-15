@@ -11,6 +11,8 @@
 
     <!-- CSS styles using bootstrap -->
     <link rel="stylesheet" href="resources/css/bootstrap.css">
+    <!-- Iconos Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resources/css/style.css">
 
@@ -81,12 +83,12 @@
         </div>
         
         <div class="carousel-item">
-            <img src="resources/img/hero/hero-2.jpg" class="d-block w-100 img-fluid" alt="Foto de hombre levantando pesas" width="1920" height="1040">
+            <img src="resources/img/hero/hero-3.jpg" class="d-block w-100 img-fluid" alt="Foto de hombre levantando pesas" width="1920" height="1040">
 
             <div class="row carousel-caption">
                 <div class="col-lg-12">
                     <div class="text-uppercase">
-                        <span>Desarrolla tu mente como un estratega</span>
+                        <span class="text-dark">Desarrolla tu mente como un estratega</span>
                         <h1>fortalece tu esp&iacute;ritu, <strong class="text-primary">alcanza la grandeza</strong>.</h1>
                         <a href="#" class="btn btn-primary">Get info</a>
                     </div>
@@ -256,11 +258,11 @@
     <!-- Appointments Section End -->
 
     <!-- Pricing Section Begin -->
-    <section class="bg-secondary py-5">
+    <section class="bg-dark bg-gradient py-5">
         <div class="container">
             <div class="row col-lg-12 mb-5">
                 <div class="text-center text-uppercase text-white">
-                    <span class="text-dark fw-bold">Nuestros Planes</span>
+                    <span class="text-primary fw-bold">Nuestros Planes</span>
                     <h2>Escoje el plan que mejor te convenga</h2>
                 </div>
             </div>
@@ -270,14 +272,16 @@
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-header fw-bold text-center">Plan B&aacute;sico - "Iniciado"</div>
                         <div class="card-body d-flex flex-column">
-                            <h2 class="card-title fw-bold text-center">&euro;50</h2>
+                            <h2 class="card-title fw-bold text-center bg-primary text-white">&euro;50</h2>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Clases grupales (Muay Thai, MMA, BJJ, Kyokushinkai Karate)</li>
                                 <li class="list-group-item">Acceso a entrenamientos de fuerza</li>
                                 <li class="list-group-item">Acceso a clases de yoga e inteligencia emocional</li>
                                 <li class="list-group-item">Sesiones semanales de meditación guiada</li>
                             </ul>
-                            <a href="#" class="btn btn-primary mt-auto">Enl&iacute;state Ahora</a>
+                        </div>
+                        <div class="card-footer d-flex flex-column">
+                            <a href="#" class="btn btn-primary">Enl&iacute;state Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -286,14 +290,16 @@
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-header fw-bold text-center">Plan Intermedio - "Guerrero"</div>
                         <div class="card-body d-flex flex-column">
-                            <h2 class="cart-title fw-bold text-center">&euro;80</h2>
+                            <h2 class="cart-title fw-bold text-center bg-primary text-white">&euro;80</h2>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Todo lo incluido en el Plan Básico</li>
                                 <li class="list-group-item">Plan de nutrición personalizado</li>
                                 <li class="list-group-item">Sesiones de entrenamiento personalizadas</li>
                                 <li class="list-group-item">Sesiones bi-semanales de meditación guiada</li>
                             </ul>
-                            <a href="#" class="btn btn-primary mt-auto">Enl&iacute;state Ahora</a>
+                        </div>
+                        <div class="card-footer d-flex flex-column">
+                            <a href="#" class="btn btn-primary">Enl&iacute;state Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -301,15 +307,17 @@
                 <div class="col-12 col-lg-4">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-header fw-bold text-center">Plan Avanzado - "Heroico"</div>
-                        <div class="card-body d-flex flex-column">
-                            <h2 class="cart-title fw-bold text-center">&euro;120</h2>
+                        <div class="card-body">
+                            <h2 class="cart-title fw-bold text-center bg-primary text-white">&euro;120</h2>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Todo lo incluido en los planes anteriores</li>
                                 <li class="list-group-item">Acceso ilimitado a entrenamientos en combate</li>
                                 <li class="list-group-item">Asesoramiento adicional de salud y bienestar</li>
                                 <li class="list-group-item">Sesiones ilimitadas de meditación guiada</li>
                             </ul>
-                            <a href="#" class="btn btn-primary mt-auto">Enl&iacute;state Ahora</a>
+                        </div>
+                        <div class="card-footer d-flex flex-column">
+                            <a href="#" class="btn btn-primary">Enl&iacute;state Ahora</a>
                         </div>
                     </div>
                 </div>
@@ -321,7 +329,22 @@
     
 
     <footer class="container">
+        <div class="row">
+            <div class="col-md-6 text-white">
+                <p class="text-center text-md-start">
+                    &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <a href="https://twitter.com/" target="_blank"><i class="bi bi-twitter mx-1"></i></a>
 
+                <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook mx-1"></i></a>
+
+                <a href="https://www.linkedin.com/" target="_blank"><i class="bi bi-linkedin mx-1"></i></a>
+
+                <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram mx-1"></i></a>
+            </div>
+        </div>
     </footer>
     <script src="resources/js/bootstrap.bundle.js"></script>
 </body>
