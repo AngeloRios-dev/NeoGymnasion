@@ -10,7 +10,7 @@ CREATE TABLE NeoGymnasion.users_data (
     phone VARCHAR(20) NOT NULL,
     birth_date DATE NOT NULL,
     u_address TEXT,
-    gender ENUM('M', 'F'),
+    gender ENUM('M', 'F', 'O'),
     PRIMARY KEY (user_id)
 );
 
