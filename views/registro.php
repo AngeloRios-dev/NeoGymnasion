@@ -54,27 +54,27 @@
                 <legend>Datos personales</legend>
                 <div class="col-md-6">
                     <label for="first_names" class="form-label">Nombres</label>
-                    <input type="text" class="form-control" id="first_names">
+                    <input type="text" class="form-control" id="first_names" name="first_names">
                 </div>
                 <div class="col-md-6">
                     <label for="last_names" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="last_names">
+                    <input type="text" class="form-control" id="last_names" name="last_names">
                 </div>
                 <div class="col-md-6">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="col-md-6">
                   <label for="phone" class="form-label">Tel&eacute;fono</label>
-                  <input type="tel" class="form-control" id="phone">
+                  <input type="tel" class="form-control" id="phone" name="phone">
                 </div>
                 <div class="col-md-6">
                     <label for="birth_date" class="form-label">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="birth_date">
+                    <input type="date" class="form-control" id="birth_date" name="birth_date">
                 </div>
                 <div class="col-md-6">
                     <label for="u_address" class="form-label">Direcci&oacute;n</label>
-                    <input type="text" class="form-control" id="u_address">
+                    <input type="text" class="form-control" id="u_address" name="u_address">
                 </div>
 
                 <div class="col-md-4 d-flex gap-4 mt-4">
@@ -97,29 +97,28 @@
                 <legend>Seguridad</legend>
                 <div class="col-md-6">
                     <label for="passwd" class="form-label">Contrase&ntilde;a</label>
-                    <input type="password" class="form-control" id="passwd">
+                    <input type="password" class="form-control" id="passwd" name="password1">
                 </div>
                 <div class="col-md-6">
                     <label for="passwd2" class="form-label">Repetir Contrase&ntilde;a</label>
-                    <input type="password" class="form-control" id="passwd2">
+                    <input type="password" class="form-control" id="passwd2" name="password2">
                 </div>
             </fieldset>
 
             
 
             <fieldset class="row g-3 mt-5">
-                <legend>Aceptar T&eacute;rminos y Solicitar Presupuesto</legend>
+                <legend>Aceptar T&eacute;rminos y Condiciones</legend>
                 <div class="col-12">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="aceptarTerminos">
+                    <input class="form-check-input" type="checkbox" id="aceptarTerminos" name="aceptarTerminos"">
                     <label class="form-check-label" for="aceptarTerminos">
                         He le&iacute;do y acepto los <a href="#" class="gen-link" title="Enlace para leer los terminos">T&eacute;rminos</a> y <a href="#" class="gen-link" title="Enlace para leer condiciones">Condiciones</a>
                     </label>
                   </div>
                 </div>
                 <div class="col-12">
-                  <button type="submit" id="solicitarPresupuesto" class="btn btn-primary">Solicitar Presupuesto</button>
-                  <p class="error-msg"></p>
+                  <button type="submit" id="registrarse" class="btn btn-primary" name="registrarse">Registrarse</button>
                 </div>
             </fieldset>
             
