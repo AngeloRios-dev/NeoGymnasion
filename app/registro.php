@@ -1,3 +1,94 @@
+<?php
+$errors = array();
+
+function showErrors($errors, $field) {
+    if (isset($errors[$field]) && !empty($field)) {
+        return '<div class="alert alert-danger">'.$errors[$field].'</div>';
+    }
+    
+}
+
+
+if(isset($_POST["registrarse"])){
+    // Comprobar campos obligatorios
+    $required_fields = array("first_names", "last_names", "email", "phone", "birth_date", "u_address", "radio_gender", "password1", "password2", "aceptarTerminos");
+    foreach($required_fields as $field) {
+        if(empty($_POST[$field])) {
+            $errors[$field] = ucfirst(str_replace("_", " ", $field)) . " es obligatorio.";
+        }
+    }
+
+    // Validar nombre
+    if(!empty($_POST["first_names"]) && strlen($_POST["first_names"]) <= 100 && !is_numeric($_POST["first_names"]) && !preg_match("/[0-9]/", $_POST["first_names"])) {
+        // Nombre válido
+    } else {
+        $errors["first_names"] = "El nombre no es válido.";
+    }
+
+    // Validar apellido
+    if(!empty($_POST["last_names"]) && strlen($_POST["last_names"]) <= 100 && !is_numeric($_POST["last_names"]) && !preg_match("/[0-9]/", $_POST["last_names"])) {
+        // Apellido válido
+    } else {
+        $errors["last_names"] = "El apellido no es válido.";
+    }
+
+    // Validar correo electrónico
+    if(!empty($_POST["email"]) && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+        // Correo electrónico válido
+    } else {
+        $errors["email"] = "La dirección de correo electrónico no es válida.";
+    }
+
+    // Validar número de teléfono
+    if(!empty($_POST["phone"]) && is_numeric($_POST["phone"]) && strlen($_POST["phone"]) >= 9){
+        // Número de teléfono válido
+    } else {
+        $errors["phone"] = "El número de teléfono no es válido.";
+    }
+
+    // Validar fecha de nacimiento
+    if(!empty($_POST["birth_date"])){
+        // Fecha de nacimiento válida
+    } else {
+        $errors["birth_date"] = "La fecha de nacimiento es obligatoria.";
+    }
+
+    // Validar dirección
+    if(!empty($_POST["u_address"])){
+        // Dirección válida
+    } else {
+        $errors["u_address"] = "La dirección es obligatoria.";
+    }
+
+    // Validar género
+    if(!empty($_POST["radio_gender"])){
+        // Género válido
+    } else {
+        $errors["radio_gender"] = "El género es obligatorio.";
+    }
+
+    // Validar contraseñas
+    if(!empty($_POST["password1"]) && strlen($_POST["password1"]) >= 10 && $_POST["password1"] === $_POST["password2"]){
+        // Contraseñas válidas y coinciden
+    } else {
+        $errors["password"] = "La contraseña debe tener al menos 10 caracteres y coincidir.";
+    }
+
+    // Validar aceptación de términos y condiciones
+    if(empty($_POST["aceptarTerminos"])) {
+        $errors["aceptarTerminos"] = "Debes aceptar los términos y condiciones.";
+    }
+
+    // Si no hay errores, procesar el formulario
+    if(empty($errors)) {
+        // Procesar el formulario, por ejemplo, guardar los datos en la base de datos
+        // header("Location: success.php"); // Redirigir a una página de éxito
+        // exit();
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,33 +139,39 @@
             <h2 class="text-center fw-bold my-5">Formulario de Registro</h2>
         </div>
 
-        <form action="" method="post" id="registrationForm">
+        <form action="" method="POST" id="registrationForm">
 
             <fieldset class="row g-3">
                 <legend>Datos personales</legend>
                 <div class="col-md-6">
                     <label for="first_names" class="form-label">Nombres</label>
                     <input type="text" class="form-control" id="first_names" name="first_names">
+                    <?php echo showErrors($errors, "first_names"); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="last_names" class="form-label">Apellidos</label>
                     <input type="text" class="form-control" id="last_names" name="last_names">
+                    <?php echo showErrors($errors, "last_names"); ?>
                 </div>
                 <div class="col-md-6">
                   <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control" id="email" name="email">
+                  <?php echo showErrors($errors, "email"); ?>
                 </div>
                 <div class="col-md-6">
                   <label for="phone" class="form-label">Tel&eacute;fono</label>
                   <input type="tel" class="form-control" id="phone" name="phone">
+                  <?php echo showErrors($errors, "phone"); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="birth_date" class="form-label">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="birth_date" name="birth_date">
+                    <?php echo showErrors($errors, "birth_date"); ?>
                 </div>
                 <div class="col-md-6">
                     <label for="u_address" class="form-label">Direcci&oacute;n</label>
                     <input type="text" class="form-control" id="u_address" name="u_address">
+                    <?php echo showErrors($errors, "u_address"); ?>
                 </div>
 
                 <div class="col-md-4 d-flex gap-4 mt-4">
@@ -90,6 +187,7 @@
                         <input type="radio" class="form-check-input" name="radio_gender" id="o_gender" value="o">
                         <label class="form-check-label" for="o_gender">Otro</label>
                     </div>
+                    <?php echo showErrors($errors, "radio_gender"); ?>
                 </div>
             </fieldset>
 

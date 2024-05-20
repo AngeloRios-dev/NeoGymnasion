@@ -58,7 +58,7 @@ $users = mysqli_query($conn, "SELECT user_id, first_names, last_names, email FRO
                 <tr>
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Email / Usuario</th>
                     <th scope="col">Acci&oacute;n</th>
                 </tr>
                 <?php 
@@ -68,9 +68,7 @@ $users = mysqli_query($conn, "SELECT user_id, first_names, last_names, email FRO
                             <td><?= $user["last_names"]; ?></td>
                             <td><?= $user["email"]; ?></td>
                             <td>
-                                <a href="ver.php?id=<?= $user["user_id"]; ?>" class="btn btn-success">Ver</a>
-                                <a href="editar.php?id=<?= $user["user_id"]; ?>" class="btn btn-warning">Editar</a>
-                                <a href="borrar.php?id=<?= $user["user_id"]; ?>" class="btn btn-danger">Borrar</a>
+                                <a href="ver.php?id=<?= $user["user_id"]; ?>" class="btn btn-success">Ver M&aacute;s</a>
                             </td>
                         </tr>
                 <?php } ?>

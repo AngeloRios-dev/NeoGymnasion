@@ -4,8 +4,8 @@ CREATE DATABASE IF NOT EXISTS NeoGymnasion;
 -- Create table user_data to store user information
 CREATE TABLE NeoGymnasion.users_data (
     user_id INT NOT NULL AUTO_INCREMENT,
-    first_names VARCHAR(50) NOT NULL,
-    last_names VARCHAR(50) NOT NULL,
+    first_names VARCHAR(100) NOT NULL,
+    last_names VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     phone VARCHAR(20) NOT NULL,
     birth_date DATE NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE NeoGymnasion.users_data (
 CREATE TABLE NeoGymnasion.users_login (
     login_id INT NOT NULL AUTO_INCREMENT,
     fk_user_id INT NOT NULL UNIQUE,
-    username VARCHAR(50) NOT NULL UNIQUE,
+    username VARCHAR(255) NOT NULL UNIQUE,
     u_password VARCHAR(255) NOT NULL,
     u_role ENUM('admin', 'user') NOT NULL,
     PRIMARY KEY (login_id),

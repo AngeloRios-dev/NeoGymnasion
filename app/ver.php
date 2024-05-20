@@ -5,8 +5,8 @@
     }
 
     $id = $_GET["id"];
-    $user = mysqli_query($conn, "SELECT * FROM users_data WHERE user_id = {$id}");
-
+    $user_query = mysqli_query($conn, "SELECT * FROM users_data WHERE user_id = {$id}");
+    $user = mysqli_fetch_assoc($user_query);
 ?>
 
 
@@ -56,19 +56,46 @@
 
     </header> <!-- Header section End -->
 
-
-    <!-- Table to display user information Begin-->
+        <!-- Table to display user information Begin-->
     <div class="container py-5 my-5">
-        <div class="row">
+        <div class="row py-5">
             <table class="table table-striped text-dark">
                 <tr>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Acci&oacute;n</th>
+                    <th scope="row">Nombres:</th>
+                    <td><?= $user["first_names"]; ?></td>
                 </tr>
-                
+                <tr>
+                    <th scope="row">Apellidos:</th>
+                    <td><?= $user["last_names"]; ?></td>
+                </tr>            
+                <tr>
+                    <th scope="row">Email</th>
+                    <td><?= $user["email"]; ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Tel&eacute;fono</th>
+                    <td><?= $user["phone"]; ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Fecha Nacimiento</th>
+                    <td><?= $user["birth_date"]; ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Direcci&oacute;n</th>
+                    <td><?= $user["u_address"]; ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Genero</th>
+                    <td><?= $user["gender"]; ?></td>
+                </tr>
             </table>
+            <div class="row">
+                <div class="d-flex gap-3">
+                    <a href="administrar-usuarios.php" class="btn btn-primary">Volver</a>
+                    <a href="administrar-usuarios.php" class="btn btn-warning">Editar</a>
+                    <a href="administrar-usuarios.php" class="btn btn-danger">Borrar</a>
+                </div>
+            </div>
         </div>
     </div> <!-- Table to display user information End-->
 
