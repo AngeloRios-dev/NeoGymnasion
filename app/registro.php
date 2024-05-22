@@ -1,5 +1,8 @@
 <?php
+    // Iniciar la sesión al principio del script
+    session_start(); 
     include 'recibir-registro.php';
+
 
 ?>
 
@@ -51,6 +54,14 @@
     <section class="container my-5 py-5 bg-light">
         <div class="row">
             <h2 class="text-center fw-bold my-5">Formulario de Registro</h2>
+            <div class="alert alert-success text-center">
+                <?php
+                    if (isset($_SESSION['success_message'])) {
+                        echo $_SESSION['success_message'];
+                        unset($_SESSION['success_message']);
+                    }
+                ?> 
+            </div>
         </div>
 
         <form action="" method="POST" id="registrationForm">

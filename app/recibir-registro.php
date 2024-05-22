@@ -1,4 +1,7 @@
 <?php
+// Iniciar la sesión al principio del script
+session_start(); 
+include 'includes/connection.php';
 $errors = array();
 
 function showErrors($errors, $field) {
@@ -94,16 +97,45 @@ if(isset($_POST["registrarse"])){
     }
 
     // Si no hay errores, procesar el formulario
-    if(empty($errors)) {
-        // Procesar el formulario, por ejemplo, guardar los datos en la base de datos
-        // header("Location: success.php"); // Redirigir a una página de éxito
-        // exit();
-    }
+    if (empty($errors)) {
+        // Iniciar una transacción
+        mysqli_begin_transaction($conn);
+    
+        try {
+            // Insertar datos del usuario en users_data
+            $stmt1 = $conn->prepare("INSERT INTO NeoGymnasion.users_data (first_names, last_names, email, phone, birth_date, u_address, gender) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt1->bind_param("sssssss", $_POST["first_names"], $_POST["last_names"], $_POST["email"], $_POST["phone"], $_POST["birth_date"], $_POST["u_address"], $_POST["radio_gender"]);
+            $stmt1->execute();
+    
+            // Obtener el user_id del nuevo usuario insertado
+            $user_id = $conn->insert_id;
+    
+            // Insertar datos de login en users_login
+            $hashed_password = sha1($_POST["password1"]);
+            $stmt2 = $conn->prepare("INSERT INTO NeoGymnasion.users_login (fk_user_id, username, u_password, u_role) VALUES (?, ?, ?, 'user')");
+            $stmt2->bind_param("iss", $user_id, $_POST["email"], $hashed_password);
+            $stmt2->execute();
+    
+            // Confirmar la transacción
+            mysqli_commit($conn);
+    
+            // Guardar el mensaje de éxito en la sesión
+            $_SESSION['success_message'] = "Registro exitoso.";
 
-    if (isset($_POST["registrarse"]) && count($errors) ==0) {
+            // Redirigir a la página de registro
+            header("Location: registro.php");
+            exit();
 
-        header("Location:index.php");
-    }
+        } catch (Exception $e) {
+            // Deshacer la transacción en caso de error
+            mysqli_rollback($conn);
+            echo "Error: " . $e->getMessage();
+        }
+    
+        // Cerrar las declaraciones
+        $stmt1->close();
+        $stmt2->close();
+    } 
 }
 ?>
 
