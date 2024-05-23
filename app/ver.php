@@ -6,7 +6,10 @@
 
     $id = $_GET["id"];
     $user_query = mysqli_query($conn, "SELECT * FROM users_data WHERE user_id = {$id}");
+    $login_data = mysqli_query($conn, "SELECT * FROM users_login WHERE fk_user_id = {$id}");
+
     $user = mysqli_fetch_assoc($user_query);
+    $user_login = mysqli_fetch_assoc($login_data);
 ?>
 
 
@@ -60,6 +63,10 @@
     <div class="container py-5 my-5">
         <div class="row py-5">
             <table class="table table-striped text-dark">
+            <tr>
+                    <th scope="row">ID:</th>
+                    <td><?= $user["user_id"]; ?></td>
+                </tr>
                 <tr>
                     <th scope="row">Nombres:</th>
                     <td><?= $user["first_names"]; ?></td>
@@ -69,24 +76,28 @@
                     <td><?= $user["last_names"]; ?></td>
                 </tr>            
                 <tr>
-                    <th scope="row">Email</th>
+                    <th scope="row">Email:</th>
                     <td><?= $user["email"]; ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Tel&eacute;fono</th>
+                    <th scope="row">Tel&eacute;fono:</th>
                     <td><?= $user["phone"]; ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Fecha Nacimiento</th>
+                    <th scope="row">Fecha Nacimiento:</th>
                     <td><?= $user["birth_date"]; ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Direcci&oacute;n</th>
+                    <th scope="row">Direcci&oacute;n:</th>
                     <td><?= $user["u_address"]; ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Genero</th>
+                    <th scope="row">Genero:</th>
                     <td><?= $user["gender"]; ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Rol:</th>
+                    <td><?= $user_login["u_role"]; ?></td>
                 </tr>
             </table>
             <div class="row">

@@ -68,7 +68,8 @@ $users = mysqli_query($conn, "SELECT user_id, first_names, last_names, email FRO
                             <td><?= $user["last_names"]; ?></td>
                             <td><?= $user["email"]; ?></td>
                             <td>
-                                <a href="ver.php?id=<?= $user["user_id"]; ?>" class="btn btn-success">Ver M&aacute;s</a>
+                                <a href="ver.php?id=<?= $user["user_id"]; ?>" class="btn btn-success">Ver</a>
+                                <a href="editar.php?id=<?= $user["user_id"]; ?>" class="btn btn-warning">Editar</a>
                             </td>
                         </tr>
                 <?php } ?>
