@@ -22,6 +22,24 @@ function isChecked($errors, $field, $value) {
     }
 }
 
+
+function checkEmailExists($email) {
+    global $conn; // Debes asegurarte de que la conexión a la base de datos esté disponible dentro de la función
+
+    // Preparar la consulta para verificar si el correo electrónico existe
+    $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM users_data WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $count = $row['count'];
+
+    $stmt->close();
+
+    return $count > 0;
+}
+
+
 if(isset($_POST["actualizar"])) {
     // Comprobar campos obligatorios
     $required_fields = array("first_names", "last_names", "email", "phone", "birth_date", "u_address", "radio_gender", "radio_role");
@@ -47,17 +65,7 @@ if(isset($_POST["actualizar"])) {
 
     // Validar correo electrónico
     if(!empty($_POST["email"]) && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        // Verificar si el correo electrónico ya existe en la base de datos
-        $stmt_check_email = $conn->prepare("SELECT user_id FROM NeoGymnasion.users_data WHERE email = ? AND user_id != ?");
-        $stmt_check_email->bind_param("si", $_POST["email"], $_POST["user_id"]);
-        $stmt_check_email->execute();
-        $stmt_check_email->store_result();
         
-        if($stmt_check_email->num_rows > 0) {
-            $errors["email"] = "La dirección de correo electrónico ya está en uso.";
-        }
-
-        $stmt_check_email->close();
     } else {
         $errors["email"] = "La dirección de correo electrónico no es válida.";
     }
@@ -106,48 +114,65 @@ if(isset($_POST["actualizar"])) {
         }
     }
 
-    if (empty($errors)) {
-        // Iniciar una transacción
-        mysqli_begin_transaction($conn);
     
-        try {
-            // Actualizar datos del usuario en users_data
-            $stmt1 = $conn->prepare("UPDATE NeoGymnasion.users_data SET first_names=?, last_names=?, email=?, phone=?, birth_date=?, u_address=?, gender=? WHERE user_id=?");
-            $stmt1->bind_param("sssssssi", $_POST["first_names"], $_POST["last_names"], $_POST["email"], $_POST["phone"], $_POST["birth_date"], $_POST["u_address"], $_POST["radio_gender"], $_POST["user_id"]);
-            $stmt1->execute();
     
-            // Actualizar rol de usuario en users_login
-            $stmt3 = $conn->prepare("UPDATE NeoGymnasion.users_login SET u_role=?, username=? WHERE fk_user_id=?");
-            $stmt3->bind_param("ssi", $_POST["radio_role"], $_POST["email"], $_POST["user_id"]);
-            $stmt3->execute();
+    if (isset($_POST['email'])) {
+        $email = $_POST['email'];
     
-            // Actualizar contraseña solo si ha sido proporcionada
-            if (!empty($hashed_password)) {
-                $stmt2 = $conn->prepare("UPDATE NeoGymnasion.users_login SET u_password=? WHERE fk_user_id=?");
-                $stmt2->bind_param("si", $hashed_password, $_POST["user_id"]);
-                $stmt2->execute();
-                $stmt2->close();
-            }
-    
-            // Confirmar la transacción
-            mysqli_commit($conn);
-    
-            // Guardar el mensaje de éxito en la sesión
-            $_SESSION['success_message'] = "Actualización exitosa.";
+        if (checkEmailExists($email)) {
+            // El correo electrónico ya existe en la base de datos
     
             // Redirigir a la página de edición
+            $_SESSION['fail_message'] = "Ya existe una cuenta con ese correo {$email}.";
             header("Location: editar.php?id=" . $_POST["user_id"]);
             exit();
-        } catch (Exception $e) {
-            // Deshacer la transacción en caso de error
-            mysqli_rollback($conn);
-            echo "Error: " . $e->getMessage();
-        }
-    
-        // Cerrar las declaraciones
-        $stmt1->close();
-        $stmt3->close();
-    }    
+        } else {
+            // Si no hay errores, procesar el formulario
+            if (empty($errors)) {
+                // Iniciar una transacción
+                mysqli_begin_transaction($conn);
 
+                try {
+                    // Actualizar datos del usuario en users_data
+                    $stmt1 = $conn->prepare("UPDATE NeoGymnasion.users_data SET first_names=?, last_names=?, email=?, phone=?, birth_date=?, u_address=?, gender=? WHERE user_id=?");
+                    $stmt1->bind_param("sssssssi", $_POST["first_names"], $_POST["last_names"], $_POST["email"], $_POST["phone"], $_POST["birth_date"], $_POST["u_address"], $_POST["radio_gender"], $_POST["user_id"]);
+                    $stmt1->execute();
+
+                    // Actualizar rol de usuario en users_login
+                    $stmt3 = $conn->prepare("UPDATE NeoGymnasion.users_login SET u_role=?, username=? WHERE fk_user_id=?");
+                    $stmt3->bind_param("ssi", $_POST["radio_role"], $_POST["email"], $_POST["user_id"]);
+                    $stmt3->execute();
+
+                    // Actualizar contraseña solo si ha sido proporcionada
+                    if (!empty($hashed_password)) {
+                        $stmt2 = $conn->prepare("UPDATE NeoGymnasion.users_login SET u_password=? WHERE fk_user_id=?");
+                        $stmt2->bind_param("si", $hashed_password, $_POST["user_id"]);
+                        $stmt2->execute();
+                        $stmt2->close();
+                    }
+
+                    // Confirmar la transacción
+                    mysqli_commit($conn);
+
+                    // Guardar el mensaje de éxito en la sesión
+                    $_SESSION['success_message'] = "Actualización exitosa.";
+
+                    // Redirigir a la página de edición
+                    header("Location: editar.php?id=" . $_POST["user_id"]);
+                    exit();
+                } catch (Exception $e) {
+                    // Deshacer la transacción en caso de error
+                    mysqli_rollback($conn);
+                    echo "Error: " . $e->getMessage();
+                }
+
+                // Cerrar las declaraciones
+                $stmt1->close();
+                $stmt3->close();
+            }
+        }
+    }
+
+    
 }
 ?>

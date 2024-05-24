@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,6 +39,12 @@
                         <li class="nav-item px-2">
                             <a class="nav-link" href="./views/registro.html">Registro</a>
                         </li>
+                        <?php
+                            if (isset($_SESSION["logged"])) { ?>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="./app/logout.php">Cerrar Sesi&oacute;n</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>

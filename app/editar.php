@@ -84,6 +84,10 @@
                         echo "<div class='alert alert-success text-center'>"."{$_SESSION['success_message']}"."</div>";
                         unset($_SESSION['success_message']);
                     }
+                    if (isset($_SESSION['fail_message'])) {
+                        echo "<div class='alert alert-danger text-center'>"."{$_SESSION['fail_message']}"."</div>";
+                        unset($_SESSION['fail_message']);
+                    }
                 ?> 
         </div>
 

@@ -1,4 +1,5 @@
 <?php
+    include "redirect.php";
     include './includes/connection.php';
     if (!isset($_GET["id"]) || empty($_GET["id"]) || !is_numeric($_GET["id"])) {
         header("Location:administrar-usuarios.php");
@@ -103,7 +104,7 @@
             <div class="row">
                 <div class="d-flex gap-3">
                     <a href="administrar-usuarios.php" class="btn btn-primary">Volver</a>
-                    <a href="administrar-usuarios.php" class="btn btn-warning">Editar</a>
+                    <a href="editar.php?id=<?= $user["user_id"]; ?>" class="btn btn-warning">Editar</a>
                     <a href="administrar-usuarios.php" class="btn btn-danger">Borrar</a>
                 </div>
             </div>

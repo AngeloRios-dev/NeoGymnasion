@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,11 +49,18 @@
     <section class="container my-5 py-5 bg-light">
         <div class="row">
             <h2 class="text-center fw-bold my-5">Iniciar Sesi&oacute;n</h2>
+            <?php
+                if (isset($_SESSION["error_login"])) {
+                    echo '<div class="alert alert-danger">' . $_SESSION["error_login"] . '</div>';
+                    unset($_SESSION["error_login"]);
+                }
+            ?>
         </div>
 
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form action="../app/login.php" method="post" id="login">
+
+                <form action="login.php" method="post" id="login">
                     <div class="row g-3">
         
                         <div class="col-12">
@@ -64,7 +74,7 @@
                         </div>
         
                         <div class="col-12">
-                          <button type="submit" id="login" class="btn btn-primary">Iniciar Sesi&oacute;n</button>
+                          <button type="submit" id="login" class="btn btn-primary" name="login">Iniciar Sesi&oacute;n</button>
                         </div>
         
                     </div>

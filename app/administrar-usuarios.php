@@ -1,4 +1,5 @@
 <?php
+include "redirect.php";
 include './includes/connection.php';
 $users = mysqli_query($conn, "SELECT user_id, first_names, last_names, email FROM users_data")
 

@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    function fileName() {
+        // Obtiene la ruta completa del script actual
+        $rutaCompleta = $_SERVER['PHP_SELF'];
+        
+        // Usa basename para obtener solo el nombre del archivo de la ruta completa
+        $nombreArchivo = basename($rutaCompleta);
+        
+        return $nombreArchivo;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,15 +40,21 @@
                 <div class="collapse navbar-collapse bg-clr-500" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item px-2">
-                            <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+                            <a class="nav-link" aria-current="page" href="index.php">Inicio</a>
                         </li>
 
                         <li class="nav-item px-2">
-                            <a class="nav-link" href="./views/noticias.html">Noticias</a>
+                            <a class="nav-link" href="./app/ingresar.php">Iniciar Sesi&oacute;n</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a class="nav-link" href="./views/registro.html">Registro</a>
+                            <a class="nav-link" href="./app/registro.php">Registro</a>
                         </li>
+                        <?php
+                            if (isset($_SESSION["logged"])) { ?>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="./app/logout.php">Cerrar Sesi&oacute;n</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>

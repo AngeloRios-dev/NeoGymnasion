@@ -26,6 +26,23 @@ function isChecked($errors, $field, $value) {
 }
 
 
+function checkEmailExists($email) {
+    global $conn; // Debes asegurarte de que la conexión a la base de datos esté disponible dentro de la función
+
+    // Preparar la consulta para verificar si el correo electrónico existe
+    $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM users_data WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $count = $row['count'];
+
+    $stmt->close();
+
+    return $count > 0;
+}
+
+
 if(isset($_POST["registrarse"])){
     // Comprobar campos obligatorios
     $required_fields = array("first_names", "last_names", "email", "phone", "birth_date", "u_address", "radio_gender", "password1", "password2", "aceptarTerminos");
@@ -52,6 +69,15 @@ if(isset($_POST["registrarse"])){
     // Validar correo electrónico
     if(!empty($_POST["email"]) && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
         // Correo electrónico válido
+        $email = $_POST['email'];
+    
+        if (checkEmailExists($email)) {
+            // El correo electrónico ya existe en la base de datos
+            // Redirigir a la página de edición
+            $_SESSION['fail_message'] = "Ya existe una cuenta con ese correo {$email}.";
+            $errors["email"] = "Ya existe una cuenta con ese correo.";
+            
+        }
     } else {
         $errors["email"] = "La dirección de correo electrónico no es válida.";
     }
@@ -135,7 +161,9 @@ if(isset($_POST["registrarse"])){
         // Cerrar las declaraciones
         $stmt1->close();
         $stmt2->close();
-    } 
+    }
+
+     
 }
 ?>
 
