@@ -1,6 +1,4 @@
-<?php
-    session_start();
-    
+<?php 
     if (!isset($_SESSION["logged"])) {
         header("Location: ingresar.php");
     }

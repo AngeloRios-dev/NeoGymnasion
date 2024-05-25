@@ -1,4 +1,3 @@
-    <!-- Footer section Begin -->
     <footer class="container">
         <div class="row my-5 pt-3 border-top border-secondary">
             <div class="col-md-6 text-white">
@@ -21,6 +20,6 @@
     <!-- Footer section End -->
 
     <!-- Loading Boostrap JS bundle -->
-    <script src="resources/js/bootstrap.bundle.js"></script>
+    <script src="<?php echo $resourcesPath . "/js/bootstrap.bundle.js"; ?>"></script>
 </body>
 </html>
