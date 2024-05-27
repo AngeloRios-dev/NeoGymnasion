@@ -7,5 +7,5 @@
 
 <!-- Footer section Begin -->
 <?php
-    include "app/includes/footer.php";
+    include "./includes/footer.php";
 ?>

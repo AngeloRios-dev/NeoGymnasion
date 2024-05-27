@@ -13,15 +13,34 @@ $insert_users = "INSERT INTO NeoGymnasion.users_data (first_names, last_names, e
         ('David', 'Rodríguez', 'david@example.com', '258369147', '1980-07-08', 'Paseo de la Castellana 789, Zaragoza', 'M'),
         ('Elena', 'Jiménez', 'elena@example.com', '123789456', '1983-06-30', 'Calle Rambla 456, Palma de Mallorca', 'F'),
         ('Javier', 'Ruiz', 'javier@example.com', '369147258', '1975-03-18', 'Calle Mayor 159, Las Palmas de Gran Canaria', 'M'),
-        ('Sofía', 'Díaz', 'sofia@example.com', '456789123', '1998-12-22', 'Avenida del Puerto 753, Tenerife', 'F');";
-mysqli_query($conn, $insert_users);
+        ('Sofía', 'Díaz', 'sofia@example.com', '456789123', '1998-12-22', 'Avenida del Puerto 753, Tenerife', 'F'),
+        ('Miguel', 'Hernández', 'miguel@example.com', '852369741', '1992-01-30', 'Calle Primavera 123, Madrid', 'M'),
+        ('Sara', 'Pérez', 'sara@example.com', '963852741', '1987-04-25', 'Avenida Otoño 456, Valencia', 'F'),
+        ('Lucía', 'Morales', 'lucia@example.com', '753159852', '1990-09-12', 'Calle Verano 789, Barcelona', 'F'),
+        ('Raúl', 'Castro', 'raul@example.com', '951357852', '1982-11-18', 'Calle Invierno 321, Sevilla', 'M'),
+        ('Paula', 'Vargas', 'paula@example.com', '852753159', '1994-03-05', 'Avenida Primavera 654, Zaragoza', 'F'),
+        ('Adrián', 'Ramírez', 'adrian@example.com', '741963852', '1993-06-28', 'Calle Otoño 987, Málaga', 'M'),
+        ('Natalia', 'Soto', 'natalia@example.com', '369741258', '1988-08-13', 'Avenida Verano 159, Bilbao', 'F'),
+        ('Iván', 'Ortiz', 'ivan@example.com', '258147369', '1995-12-31', 'Calle Invierno 753, Palma de Mallorca', 'M'),
+        ('Andrea', 'Flores', 'andrea@example.com', '147852369', '1984-07-19', 'Avenida Primavera 159, Las Palmas', 'O'),
+        ('Alex', 'González', 'alex@example.com', '963258741', '1991-05-07', 'Calle Otoño 753, Tenerife', 'O');";
+if (mysqli_query($conn, $insert_users)) {
+    echo "Datos insertados correctamente.<br>";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
 
 
 // Insert data into users_login table
-// $login_data = "INSERT INTO NeoGymnasion.users_login (fk_user_id, username, u_password, u_role)
-//     SELECT user_id, email, 'password123', 'user' FROM NeoGymnasion.users_data;";
-$login_data = "INSERT INTO NeoGymnasion.users_login (fk_user_id, username, u_password, u_role)
-    SELECT user_id, email, '".sha1("password123")."', 'user' FROM NeoGymnasion.users_data;";
-mysqli_query($conn, $login_data);
+$password = sha1("password123");
+$insert_logins = "INSERT INTO NeoGymnasion.users_login (fk_user_id, username, u_password, u_role)
+    SELECT user_id, email, '$password', 'user' FROM NeoGymnasion.users_data;";
+mysqli_query($conn, $insert_logins);
+if (mysqli_affected_rows($conn) > 0) {
+    echo "Datos insertados correctamente.";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
 
 ?>

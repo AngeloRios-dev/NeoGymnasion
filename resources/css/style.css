@@ -1,3 +1,10 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    line-height: 1.6;
+}
+
 .set-bg {
     background: url('../img/banner-bg.jpg');
 	background-repeat: no-repeat;

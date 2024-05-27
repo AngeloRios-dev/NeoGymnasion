@@ -28,6 +28,7 @@
                             <td>
                                 <a href="ver.php?id=<?= $user["user_id"]; ?>" class="btn btn-success">Ver</a>
                                 <a href="editar.php?id=<?= $user["user_id"]; ?>" class="btn btn-warning">Editar</a>
+                                <a href="borrar-usuario.php?id=<?= $user["user_id"]; ?>" class="btn btn-danger">borrar</a>
                             </td>
                         </tr>
                 <?php } ?>

@@ -1,4 +1,4 @@
-    <footer class="container">
+    <footer class="container mt-auto">
         <div class="row my-5 pt-3 border-top border-secondary">
             <div class="col-md-6 text-white">
                 <p class="text-center text-md-start">

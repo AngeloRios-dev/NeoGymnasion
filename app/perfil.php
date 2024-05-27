@@ -1,6 +1,10 @@
 <?php
     include "includes/header.php";
 
+    function getAge($date) {
+
+    }
+
     $username = $_SESSION["logged"]["username"];
     // Usar una consulta preparada para mayor seguridad
     $stmt = $conn->prepare("SELECT * FROM users_data WHERE email = ?");
@@ -10,6 +14,12 @@
     $user_data = $result->fetch_assoc();
 
     $stmt->close();
+
+    $user_fields = [
+        "Tel&eacute;fono" => "phone",
+        "Direcci&oacute;n" => "u_address",
+        "Fecha de nacimiento" => "birth_date",
+    ];
 
 ?>
 
@@ -21,14 +31,14 @@
                 <div class="col-lg-12 my-5">
                     <div class="text-center text-uppercase text-white">
                         <span class="text-primary fw-bold">Perfil de usuario</span>
-                        <h2>Lo que te ofrecemos</h2>
+                        <h2>Tus datos personales</h2>
                     </div>
                 </div>
             </div>
 
             <div class="row justify-content-center">
 
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <div class="card h-100 shadow-sm border-0">
                         <div>
                             <img src="<?php echo $resourcesPath."/img/banner-bg.jpg"; ?>" alt="imagen de fondo para perfil" class="card-img-top img-fluid">
@@ -50,12 +60,16 @@
                                 </h6>
                             </div>
                             <p class="card-text">
-                                <span class="fw-bold">Phone:</span>
                                 <?php
-                                    if (isset($_SESSION["logged"])) { ?>
-                                        <?php echo $user_data["phone"]; ?>
-                                <?php } ?>
+                                    if (isset($_SESSION["logged"])) {
+                                        foreach ($user_fields as $label => $field) { ?>
+                                                <span class="fw-bold"><?php echo $label; ?>:</span>
+                                                <?php echo $user_data[$field] .  "<br>"; ?> 
+                                        <?php }
+                                    }
+                                ?>
                             </p>
+
                         </div>
                     </div>
                 </div>
