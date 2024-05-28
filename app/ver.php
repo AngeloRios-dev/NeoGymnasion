@@ -69,7 +69,7 @@
                 <div class="d-flex gap-3">
                     <a href="administrar-usuarios.php" class="btn btn-primary">Volver</a>
                     <a href="editar.php?id=<?= $user["user_id"]; ?>" class="btn btn-warning">Editar</a>
-                    <a href="administrar-usuarios.php" class="btn btn-danger">Borrar</a>
+                    <a href="borrar-usuario.php?id=<?= $user["user_id"]; ?>" class="btn btn-danger">Borrar</a>
                 </div>
             </div>
         </div>

@@ -23,7 +23,8 @@ $insert_users = "INSERT INTO NeoGymnasion.users_data (first_names, last_names, e
         ('Natalia', 'Soto', 'natalia@example.com', '369741258', '1988-08-13', 'Avenida Verano 159, Bilbao', 'F'),
         ('Iván', 'Ortiz', 'ivan@example.com', '258147369', '1995-12-31', 'Calle Invierno 753, Palma de Mallorca', 'M'),
         ('Andrea', 'Flores', 'andrea@example.com', '147852369', '1984-07-19', 'Avenida Primavera 159, Las Palmas', 'O'),
-        ('Alex', 'González', 'alex@example.com', '963258741', '1991-05-07', 'Calle Otoño 753, Tenerife', 'O');";
+        ('Alex', 'González', 'alex@example.com', '963258741', '1991-05-07', 'Calle Otoño 753, Tenerife', 'O'),
+        ('Sudo', 'Admin', 'admin@neo.com', '666666666', '1986-10-24', 'Calle Ciberespacio, Madrid', 'O');";
 if (mysqli_query($conn, $insert_users)) {
     echo "Datos insertados correctamente.<br>";
 } else {

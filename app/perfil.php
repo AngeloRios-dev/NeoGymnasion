@@ -1,10 +1,6 @@
 <?php
     include "includes/header.php";
 
-    function getAge($date) {
-
-    }
-
     $username = $_SESSION["logged"]["username"];
     // Usar una consulta preparada para mayor seguridad
     $stmt = $conn->prepare("SELECT * FROM users_data WHERE email = ?");
