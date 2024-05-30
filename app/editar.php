@@ -1,7 +1,6 @@
 <?php
-    // Iniciar la sesión al principio del script
-    // session_start(); 
     include "./includes/header.php";
+    include "./includes/req_admin.php";
     include 'editar-usuario.php';
 
 

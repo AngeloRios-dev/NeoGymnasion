@@ -1,6 +1,6 @@
 <?php
     include "./includes/header.php";
-    include "redirect.php";
+    include "./includes/req_admin.php";
     $users = mysqli_query($conn, "SELECT user_id FROM users_data");
 
     $users_count = mysqli_num_rows($users);

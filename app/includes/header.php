@@ -14,6 +14,7 @@
     $appPath = $homePath . "/app";
     $includesPath = $appPath . "/includes";
     $resourcesPath = $homePath . "/resources";
+    $utilPath = $homePath . "/util";
 ?>
 
 <!DOCTYPE html>
@@ -50,24 +51,42 @@
                         <li class="nav-item px-2">
                             <a class="nav-link" aria-current="page" href="<?php echo $appPath . '/noticias.php'; ?>">Noticias</a>
                         </li>
+
                         <?php
-                            if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin") { ?>
-                            <li class="nav-item px-2">
-                                <a class="nav-link" href="<?php echo $appPath . '/administrar-usuarios.php'; ?>">Ad. Usuarios</a>
-                            </li>
+                            if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin")  { ?>
+                                <div class="dropdown px-2">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-usuarios.php'; ?>">Admin. Usuarios</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-citas.php'; ?>">Admin. Citas</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-noticias.php'; ?>">Admin. Noticias</a>
+                                        </li>
+                                    </ul>
+                                </div>
                         <?php } ?>
                         <?php
-                            if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin") { ?>
-                            <li class="nav-item px-2">
-                                <a class="nav-link" href="<?php echo $appPath . '/administrar-citas.php'; ?>">Ad. citas</a>
-                            </li>
+                            if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin")  { ?>
+                                <div class="dropdown px-2">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Crear Nuevo</button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-usuarios.php'; ?>"> Crear Usuario</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-citas.php'; ?>"> Crear Citas</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?php echo $appPath . '/crear-noticia-form.php'; ?>"> Crear Noticias</a>
+                                        </li>
+                                    </ul>
+                                </div>
                         <?php } ?>
-                        <?php
-                            if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin") { ?>
-                            <li class="nav-item px-2">
-                                <a class="nav-link" href="<?php echo $appPath . '/administrar-noticias.php'; ?>">Ad. Noticias</a>
-                            </li>
-                        <?php } ?>
+                        
                         <?php
                             if (isset($_SESSION["logged"])) { ?>
                             <li class="nav-item px-2">

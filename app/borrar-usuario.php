@@ -24,26 +24,6 @@ $user_fields = [
     "Fecha de nacimiento" => "birth_date",
 ];
 
-// Verifica si se ha confirmado la eliminación del usuario
-if (isset($_POST['confirm_delete'])) {
-
-    // Elimina el usuario de la tabla de login
-    $delete_login = "DELETE FROM NeoGymnasion.users_login WHERE fk_user_id = ?";
-    $stmt_login = mysqli_prepare($conn, $delete_login);
-    mysqli_stmt_bind_param($stmt_login, "i", $user_id);
-    mysqli_stmt_execute($stmt_login);
-
-    // Elimina el usuario de la tabla de datos
-    $delete_data = "DELETE FROM NeoGymnasion.users_data WHERE user_id = ?";
-    $stmt_data = mysqli_prepare($conn, $delete_data);
-    mysqli_stmt_bind_param($stmt_data, "i", $user_id);
-    mysqli_stmt_execute($stmt_data);
-
-    // Redirige a la página de administración de usuarios después de eliminar el usuario
-    header("Location:administrar-usuarios.php");
-    exit();
-}
-
 // Muestra el formulario de confirmación para eliminar el usuario
 ?>
 <section class="d-flex align-items-center min-vh-100">
@@ -77,7 +57,7 @@ if (isset($_POST['confirm_delete'])) {
                             
                         </p>
                         <div class="card-footer d-flex flex-column">
-                            <form method="post" action="">
+                            <form method="post" action="borrar-usuario-handler.php">
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <button type="submit" name="confirm_delete" class="btn btn-danger">S&iacute;, eliminar</button>
                                 <a href="administrar-usuarios.php" class="btn btn-secondary">Cancelar</a>
@@ -91,8 +71,6 @@ if (isset($_POST['confirm_delete'])) {
 
     </div>
 </section>
-
-
 
 <?php
 include $includesPath . "/footer.php";
