@@ -16,7 +16,6 @@
     $resourcesPath = $homePath . "/resources";
     $utilPath = $homePath . "/util";
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -75,7 +74,7 @@
                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Crear Nuevo</button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-usuarios.php'; ?>"> Crear Usuario</a>
+                                            <a class="dropdown-item" href="<?php echo $appPath . '/crear-usuario.php'; ?>"> Crear Usuario</a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="<?php echo $appPath . '/administrar-citas.php'; ?>"> Crear Citas</a>

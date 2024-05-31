@@ -32,8 +32,16 @@
 
 
     <!-- Table to display user information Begin-->
-    <div class="container py-5 my-5">
-        <div class="row">
+    <div class="container py-5 my-5 bg-light">
+        <div class="row align-items-center pt-5">
+            <div class="col-md-6">
+                <h2 class="fw-bold text-danger">Administrar Usuarios</h2>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="crear-usuario.php" class="btn btn-primary">Crear Usuario</a>
+            </div>
+        </div>
+        <div class="row py-5">
             <table class="table table-striped text-dark">
                 <tr>
                     <th scope="col">Nombres</th>
