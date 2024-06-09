@@ -84,11 +84,11 @@
                                 <p>Tipo de usuario:</p>
                                 <div class="col-md-4 d-flex gap-4">
                                     <div class="d-flex gap-2">
-                                        <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="user" checked>
+                                        <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="user" <?php isChecked("radio_role", "user"); ?>>
                                         <label class="form-check-label" for="u_role">Usuario</label>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="admin">
+                                        <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="admin" <?php isChecked("radio_role", "admin"); ?>>
                                         <label class="form-check-label" for="u_role">Administrador</label>
                                     </div>
                                     <?php echo showErrors($errors, "u_role"); ?>

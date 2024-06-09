@@ -1,6 +1,7 @@
 <?php
-// Iniciar la sesión al principio del script
-session_start(); 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include 'includes/connection.php';
 $errors = array();
 
@@ -122,6 +123,13 @@ if(isset($_POST["registrarse"])){
         $errors["password1"] = "La contraseña debe tener al menos 10 caracteres y coincidir.";
     }
 
+    // Asegúrate de validar que 'radio_role' está presente y tiene un valor aceptado
+    if (isset($_POST['radio_role']) && in_array($_POST['radio_role'], ['user', 'admin'])) {
+        $u_role = $_POST['radio_role'];
+    } else {
+        $u_role = 'user'; // valor por defecto o manejar el error según sea necesario
+    }
+
     // Validar aceptación de términos y condiciones
     if(empty($_POST["aceptarTerminos"])) {
         $errors["aceptarTerminos"] = "Debes aceptar los términos y condiciones.";
@@ -143,8 +151,8 @@ if(isset($_POST["registrarse"])){
     
             // Insertar datos de login en users_login
             $hashed_password = sha1($_POST["password1"]);
-            $stmt2 = $conn->prepare("INSERT INTO NeoGymnasion.users_login (fk_user_id, username, u_password, u_role) VALUES (?, ?, ?, 'user')");
-            $stmt2->bind_param("iss", $user_id, $_POST["email"], $hashed_password);
+            $stmt2 = $conn->prepare("INSERT INTO NeoGymnasion.users_login (fk_user_id, username, u_password, u_role) VALUES (?, ?, ?, ?)");
+            $stmt2->bind_param("isss", $user_id, $_POST["email"], $hashed_password, $u_role);
             $stmt2->execute();
     
             // Confirmar la transacción
