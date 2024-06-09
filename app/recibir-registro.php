@@ -19,8 +19,13 @@ function setFieldValues($errors, $field) {
 }
 
 
-function isChecked($errors, $field, $value) {
-    if (isset($errors) && count($errors) >= 1 && isset($_POST[$field]) && $_POST[$field] === $value) {
+// function isChecked($errors, $field, $value) {
+//     if (isset($errors) && count($errors) >= 1 && isset($_POST[$field]) && $_POST[$field] === $value) {
+//         echo "checked";
+//     }
+// }
+function isChecked($field, $value) {
+    if (isset($_POST[$field]) && $_POST[$field] == $value) {
         echo "checked";
     }
 }

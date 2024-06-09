@@ -58,15 +58,15 @@
 
                 <div class="col-md-4 d-flex gap-4 mt-4">
                     <div class="d-flex gap-2">
-                        <input type="radio" class="form-check-input" name="radio_gender" id="m_gender" value="m" <?php isChecked($errors, "radio_gender", "M"); ?>>
+                        <input type="radio" class="form-check-input" name="radio_gender" id="m_gender" value="m" <?php isChecked("radio_gender", "m"); ?>>
                         <label class="form-check-label" for="m_gender">Masculino</label>
                     </div>
                     <div class="d-flex gap-2">
-                        <input type="radio" class="form-check-input" name="radio_gender" id="f_gender" value="f" <?php isChecked($errors, "radio_gender", "F"); ?>>
+                        <input type="radio" class="form-check-input" name="radio_gender" id="f_gender" value="f" <?php isChecked("radio_gender", "f"); ?>>
                         <label class="form-check-label" for="f_gender">Femenino</label>
                     </div>
                     <div class="d-flex gap-2">
-                        <input type="radio" class="form-check-input" name="radio_gender" id="o_gender" value="o" <?php isChecked($errors, "radio_gender", "O"); ?>>
+                        <input type="radio" class="form-check-input" name="radio_gender" id="o_gender" value="o" <?php isChecked("radio_gender", "o"); ?>>
                         <label class="form-check-label" for="o_gender">Otro</label>
                     </div>
                 </div>
@@ -77,6 +77,25 @@
 
             <fieldset class="row g-3 mt-5">
                 <legend>Seguridad</legend>
+                <?php
+                    if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin")  { ?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Tipo de usuario:</p>
+                                <div class="col-md-4 d-flex gap-4">
+                                    <div class="d-flex gap-2">
+                                        <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="user" checked>
+                                        <label class="form-check-label" for="u_role">Usuario</label>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="admin">
+                                        <label class="form-check-label" for="u_role">Administrador</label>
+                                    </div>
+                                    <?php echo showErrors($errors, "u_role"); ?>
+                                </div>
+                            </div>
+                        </div>
+                <?php } ?>
                 <div class="col-md-6">
                     <label for="passwd" class="form-label">Contrase&ntilde;a</label>
                     <input type="password" class="form-control" id="passwd" name="password1">
@@ -96,7 +115,7 @@
                 <legend>Aceptar T&eacute;rminos y Condiciones</legend>
                 <div class="col-12">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="aceptarTerminos" name="aceptarTerminos" value="x" <?php isChecked($errors, "aceptarTerminos", "x"); ?>>
+                    <input class="form-check-input" type="checkbox" id="aceptarTerminos" name="aceptarTerminos" value="x" <?php isChecked("aceptarTerminos", "x"); ?>>
                     <label class="form-check-label" for="aceptarTerminos">
                         He le&iacute;do y acepto los <a href="#" class="gen-link" title="Enlace para leer los terminos">T&eacute;rminos</a> y <a href="#" class="gen-link" title="Enlace para leer condiciones">Condiciones</a>
                     </label>
