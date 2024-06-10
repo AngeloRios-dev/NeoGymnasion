@@ -45,10 +45,10 @@
                 <div class="collapse navbar-collapse bg-clr-500" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item px-2">
-                            <a class="nav-link" aria-current="page" href="<?php echo $homePath . "/index.php"; ?>">Inicio</a>
+                            <a class="nav-link <?php echo ($currentFileName === 'index.php') ? 'active' : ''; ?>" aria-current="page" href="<?php echo $homePath . "/index.php"; ?>">Inicio</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a class="nav-link" aria-current="page" href="<?php echo $appPath . '/noticias.php'; ?>">Noticias</a>
+                            <a class="nav-link <?php echo ($currentFileName === 'noticias.php') ? 'active' : ''; ?>" aria-current="page" href="<?php echo $appPath . '/noticias.php'; ?>">Noticias</a>
                         </li>
 
                         <?php
@@ -57,13 +57,13 @@
                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-usuarios.php'; ?>">Admin. Usuarios</a>
+                                            <a class="dropdown-item <?php echo ($currentFileName === 'administrar-usuarios.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/administrar-usuarios.php'; ?>">Admin. Usuarios</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-citas.php'; ?>">Admin. Citas</a>
+                                            <a class="dropdown-item <?php echo ($currentFileName === 'administrar-citas.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/administrar-citas.php'; ?>">Admin. Citas</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-noticias.php'; ?>">Admin. Noticias</a>
+                                            <a class="dropdown-item <?php echo ($currentFileName === 'administrar-noticias.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/administrar-noticias.php'; ?>">Admin. Noticias</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -74,13 +74,13 @@
                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Crear Nuevo</button>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo $appPath . '/registro.php'; ?>"> Crear Usuario</a>
+                                            <a class="dropdown-item <?php echo ($currentFileName === 'registro.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/registro.php'; ?>"> Crear Usuario</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo $appPath . '/administrar-citas.php'; ?>"> Crear Citas</a>
+                                            <a class="dropdown-item <?php echo ($currentFileName === 'administrar-citas.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/administrar-citas.php'; ?>"> Crear Citas</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?php echo $appPath . '/crear-noticia-form.php'; ?>"> Crear Noticias</a>
+                                            <a class="dropdown-item <?php echo ($currentFileName === 'crear-noticia-form.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/crear-noticia-form.php'; ?>"> Crear Noticias</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -89,13 +89,13 @@
                         <?php
                             if (isset($_SESSION["logged"])) { ?>
                             <li class="nav-item px-2">
-                                <a class="nav-link" href="<?php echo $appPath . '/perfil.php'; ?>">Perfil</a>
+                                <a class="nav-link <?php echo ($currentFileName === 'perfil.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/perfil.php'; ?>">Perfil</a>
                             </li>
                         <?php } ?>
                         <?php
                             if (!isset($_SESSION["logged"])) { ?>
                             <li class="nav-item px-2">
-                                <a class="nav-link" href="<?php echo $appPath . '/ingresar.php'; ?>">Iniciar Sesi&oacute;n</a>
+                                <a class="nav-link <?php echo ($currentFileName === 'ingresar.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/ingresar.php'; ?>">Iniciar Sesi&oacute;n</a>
                             </li>
                         <?php } ?>
                         <?php
@@ -107,7 +107,7 @@
                         <?php
                             if (!isset($_SESSION["logged"])) { ?>
                             <li class="nav-item px-2">
-                                <a class="nav-link" href="<?php echo $appPath . '/registro.php'; ?>">Registro</a>
+                                <a class="nav-link <?php echo ($currentFileName === 'registro.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/registro.php'; ?>">Registro</a>
                             </li>
                         <?php } ?>
                     </ul>
