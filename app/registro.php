@@ -125,7 +125,14 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <button type="submit" id="registrarse" class="btn btn-primary" name="registrarse">Registrarse</button>
+                    <?php
+                        if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin")  {
+                        $button_label = "Crear Usuario";    
+                    } else {
+                        $button_label = "Registrarme";
+                    }?>
+                  <button type="submit" id="registrarse" class="btn btn-primary" name="registrarse"><?php echo $button_label;?></button>
+
                 </div>
             </fieldset>
             
