@@ -2,6 +2,7 @@
     include "includes/header.php";
 
     $username = $_SESSION["logged"]["username"];
+    $user_id = $_SESSION["logged"]["fk_user_id"]; 
     // Usar una consulta preparada para mayor seguridad
     $stmt = $conn->prepare("SELECT * FROM users_data WHERE email = ?");
     $stmt->bind_param("s", $username);
@@ -55,17 +56,21 @@
                                     <?php } ?>
                                 </h6>
                             </div>
-                            <p class="card-text">
-                                <?php
-                                    if (isset($_SESSION["logged"])) {
-                                        foreach ($user_fields as $label => $field) { ?>
-                                                <span class="fw-bold"><?php echo $label; ?>:</span>
-                                                <?php echo $user_data[$field] .  "<br>"; ?> 
-                                        <?php }
-                                    }
-                                ?>
-                            </p>
-
+                            <div class="card-text">
+                                <p>
+                                    <?php
+                                        if (isset($_SESSION["logged"])) {
+                                            foreach ($user_fields as $label => $field) { ?>
+                                                    <span class="fw-bold"><?php echo $label; ?>:</span>
+                                                    <?php echo $user_data[$field] .  "<br>"; ?> 
+                                            <?php }
+                                        }
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="editar.php?id=<?php echo $user_id; ?>" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">[Editar Perfil]</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,8 @@
 <?php
 // Iniciar la sesión al principio del script
-session_start(); 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include 'includes/connection.php';
 $errors = array();
 

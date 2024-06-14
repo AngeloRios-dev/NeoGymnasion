@@ -1,6 +1,5 @@
 <?php
     include "./includes/header.php";
-    include "./includes/req_admin.php";
     include 'editar-usuario.php';
 
 
@@ -98,27 +97,30 @@
 
             <fieldset class="row g-3 mt-5">
                 <legend>Seguridad</legend>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="username" class="form-label">Usuario:</label>
-                        <input type="username" class="form-control" id="username" name="username" <?php getFieldValues($user_login, "username"); ?> disabled>
-                        <?php echo showErrors($errors, "username"); ?>
-                    </div>
-                    <div class="col-md-6">
-                        <p>Tipo de usuario:</p>
-                        <div class="col-md-4 d-flex gap-4">
-                            <div class="d-flex gap-2">
-                                <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="user" <?php getRadio($user_login, "u_role", "user"); ?>>
-                                <label class="form-check-label" for="u_role">Usuario</label>
+                <?php
+                    if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin")  { ?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Usuario:</label>
+                            <input type="username" class="form-control" id="username" name="username" <?php getFieldValues($user_login, "username"); ?> disabled>
+                            <?php echo showErrors($errors, "username"); ?>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Tipo de usuario:</p>
+                            <div class="col-md-4 d-flex gap-4">
+                                <div class="d-flex gap-2">
+                                    <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="user" <?php getRadio($user_login, "u_role", "user"); ?>>
+                                    <label class="form-check-label" for="u_role">Usuario</label>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="admin" <?php getRadio($user_login, "u_role", "admin"); ?>>
+                                    <label class="form-check-label" for="u_role">Administrador</label>
+                                </div>
+                                <?php echo showErrors($errors, "u_role"); ?>
                             </div>
-                            <div class="d-flex gap-2">
-                                <input type="radio" class="form-check-input" id="u_role" name="radio_role" value="admin" <?php getRadio($user_login, "u_role", "admin"); ?>>
-                                <label class="form-check-label" for="u_role">Administrador</label>
-                            </div>
-                            <?php echo showErrors($errors, "u_role"); ?>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
                 
                 <div class="col-md-6">
                     <label for="passwd" class="form-label">Contrase&ntilde;a</label>
