@@ -134,7 +134,13 @@
                     <?php echo showErrors($errors, "password1"); ?>
                 </div>
                 <div class="col-12">
-                    <a href="administrar-usuarios.php" class="btn btn-primary">Volver</a>
+                    <?php
+                        if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin")  { ?>
+                            <a href="administrar-usuarios.php" class="btn btn-primary">Volver</a>
+                    <?php } else { ?>
+                        <a href="perfil.php" class="btn btn-primary">Volver</a>
+                    <?php }?>
+                    
                     <button type="submit" id="actualizar" class="btn btn-success" name="actualizar">Actualizar</button>
                 </div>
             </fieldset>
