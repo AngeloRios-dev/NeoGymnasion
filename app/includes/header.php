@@ -79,7 +79,7 @@
                                             <a class="dropdown-item <?php echo ($currentFileName === 'registro.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/registro.php'; ?>"> Crear Usuario</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item <?php echo ($currentFileName === 'administrar-citas.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/administrar-citas.php'; ?>"> Crear Citas</a>
+                                            <a class="dropdown-item <?php echo ($currentFileName === 'crear-cita.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/crear-cita.php'; ?>"> Crear Citas</a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item <?php echo ($currentFileName === 'crear-noticia-form.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/crear-noticia-form.php'; ?>"> Crear Noticias</a>
