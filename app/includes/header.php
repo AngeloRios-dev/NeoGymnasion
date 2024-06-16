@@ -87,6 +87,13 @@
                                     </ul>
                                 </div>
                         <?php } ?>
+
+                        <?php
+                            if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] !== "admin")  { ?>
+                                <li class="nav-item px-2">
+                                    <a class="nav-link <?php echo ($currentFileName === 'citaciones.php') ? 'active' : ''; ?>" href="<?php echo $appPath . '/citaciones.php'; ?>">Citaciones</a>
+                                </li>
+                        <?php } ?>
                         
                         <?php
                             if (isset($_SESSION["logged"])) { ?>
