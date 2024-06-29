@@ -1,6 +1,6 @@
 <?php
     include "./includes/header.php";
-    include "redirect.php";
+    include "./includes/redirect.php";
 
     if (!isset($_GET["id"]) || empty($_GET["id"]) || !is_numeric($_GET["id"])) {
         header("Location: administrar-noticias.php");

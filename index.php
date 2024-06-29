@@ -156,7 +156,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center text-white text-uppercase">
                         <h2>Asesorate con nuestros expertos</h2>
-                        <a href="#" class="btn btn-outline-primary">Cita Previa</a>
+                        <a href="<?php echo $appPath . '/crear-cita.php'; ?>" class="btn btn-outline-primary">Cita Previa</a>
                     </div>
                 </div>
             </div>

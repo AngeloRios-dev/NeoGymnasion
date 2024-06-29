@@ -1,5 +1,6 @@
 <?php
 include "./includes/header.php";
+include "./includes/redirect.php";
 
 // Función para limpiar datos
 function cleanData($data) {
