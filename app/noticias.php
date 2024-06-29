@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Ultimas Noticias";
     include "./includes/header.php";
 
     // Definir el número de resultados por página
@@ -101,7 +102,7 @@
         </div>
     </div>
 
-<!-- Footer section Begin -->
+
 <?php
     include "./includes/footer.php";
     mysqli_free_result($result);

@@ -1,5 +1,5 @@
 <?php
-// Function to load environment variables from .env file
+// Funcion para cargar datos del archivo .env
 function loadEnv($filePath) {
     if (!file_exists($filePath)) {
         die("Error: The .env file does not exist");
@@ -16,11 +16,11 @@ function loadEnv($filePath) {
     }
 }
 
-// Load environment variables
+// Cargar variables
 $envFilePath = __DIR__ . '/.env';
 loadEnv($envFilePath);
 
-// Connection variables
+// Variables de coneccion
 $dbserver = "localhost";
 $dbuser = "root";
 $dbpassword = $_ENV['DB_PASSWORD'] ?? '';
@@ -29,12 +29,12 @@ $conn = new mysqli($dbserver, $dbuser, $dbpassword);
 
 
 function executeQuery($conn, $query, $successMessage) {
-    // Ensure the connection is successful
+    // Verificar que la conneccion sea exitosa
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Execute the query
+    // Ejecutar la query
     if ($conn->query($query) === TRUE) {
         echo $successMessage . "</br>";
     } else {
@@ -42,11 +42,11 @@ function executeQuery($conn, $query, $successMessage) {
     }
 }
 
-// SQL to Create database NeoGymnasion if it does not exist
+// Crear DB si no existe
 $createDB = "CREATE DATABASE IF NOT EXISTS NeoGymnasion;";
 executeQuery($conn, $createDB, "Database created successfully.");
 
-// Create table user_data to store user information
+// Creacion del resto de las tablas
 $create_users_data = "CREATE TABLE NeoGymnasion.users_data (
     user_id INT NOT NULL AUTO_INCREMENT,
     first_names VARCHAR(100) NOT NULL,
@@ -61,7 +61,7 @@ $create_users_data = "CREATE TABLE NeoGymnasion.users_data (
 executeQuery($conn, $create_users_data, "Table users_data created successfully.");
 
 
-// Create table users_login to manage logins
+
 $create_users_login = "CREATE TABLE NeoGymnasion.users_login (
     login_id INT NOT NULL AUTO_INCREMENT,
     fk_user_id INT NOT NULL UNIQUE,
@@ -75,7 +75,7 @@ $create_users_login = "CREATE TABLE NeoGymnasion.users_login (
 executeQuery($conn, $create_users_login, "Table users_login created successfully.");
 
 
-//  Create table to store information about appointments
+
 $create_appointments_table = "CREATE TABLE NeoGymnasion.appointments (
     appointment_id INT NOT NULL AUTO_INCREMENT,
     fk_user_id INT NOT NULL,
@@ -88,7 +88,7 @@ $create_appointments_table = "CREATE TABLE NeoGymnasion.appointments (
 executeQuery($conn, $create_appointments_table, "Table appointments created successfully.");
 
 
-//  Create table to store information about the news
+
 $create_news_table = "CREATE TABLE NeoGymnasion.news (
     news_id INT NOT NULL AUTO_INCREMENT,
     news_title VARCHAR(100) NOT NULL UNIQUE,
@@ -104,6 +104,6 @@ executeQuery($conn, $create_news_table, "Table news created successfully.");
 
 
 
-// Close the connection after all operations are done
+// Cerrar coneccion
 $conn->close();
 ?>

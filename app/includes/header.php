@@ -25,19 +25,27 @@
     <meta name="description" content="En NeoGymnasion, nos inspiramos en la fortaleza y disciplina de los antiguos guerreros espartanos y luchadores griegos, así como en los principios del estoicismo, para crear un espacio único donde el cuerpo y la mente se fortalecen en armonía.">
     <meta name="keywords" content="gimnacio, disciplina, guerrero, estoicismo, salud, armonia">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenidos | NeoGymnasion</title>
+    <title>
+        <?php
+            if (isset($tituloPagina)) {
+                echo htmlspecialchars($tituloPagina, ENT_QUOTES, 'UTF-8') . " | NeoGymnasion";
+            } else {
+                echo "NeoGymnasion";
+            }
+        ?>
+    </title>
 
-    <!-- CSS styles using bootstrap -->
+    <!-- Estilos CSS usando bootstrap -->
     <link rel="stylesheet" href="<?php echo $resourcesPath."/css/bootstrap.css"; ?>">
     <!-- Iconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Custom CSS -->
+    <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="<?php echo $resourcesPath."/css/style.css"; ?>">
 
 </head>
 <body class="bg-dark">
-    <header> <!-- Header section Begin -->
-        <!-- Nav bar section Begin -->
+    <header> <!-- Inicio del Header -->
+        <!-- Inicio del Nav Bar -->
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark bg-gradient">
             <div class="container">
                 <a class="navbar-brand text-light fw-bold fs-1 text-uppercase" href="<?php echo $homePath . "/index.php"; ?>"><span class="text-primary">Neo</span>Gymnasion</a>
@@ -122,7 +130,7 @@
                     </ul>
                 </div>
             </div>
-        </nav> <!-- Nav bar section End -->
+        </nav> <!-- Fin del Nav Bar -->
 
 
-    </header> <!-- Header section End -->
+    </header> <!-- Fin del Header -->

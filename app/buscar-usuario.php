@@ -1,5 +1,5 @@
 <?php
-include './includes/connection.php'; // Asegúrate de tener la conexión a la base de datos en este archivo
+include './includes/connection.php';
 
 header('Content-Type: application/json');
 

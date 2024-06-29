@@ -1,4 +1,5 @@
 <?php
+$tituloPagina = "Editar Cita";
 include "./includes/header.php";
 
 
@@ -9,10 +10,6 @@ function getAppointmentData($data, $field) {
     return '';
 }
 
-// if (!isset($_GET["id"]) || empty($_GET["id"]) || !is_numeric($_GET["id"])) {
-//     header("Location: administrar-usuarios.php");
-//     exit();
-// }
 
 $id = $_GET["id"];
 $appointment_query = mysqli_query($conn, "SELECT appointment_date, appointment_reason, fk_user_id FROM appointments WHERE appointment_id = {$id}");
@@ -80,13 +77,12 @@ $user = mysqli_fetch_assoc($user_query);
             <?php } else { ?>
                 <a href="citaciones.php" class="btn btn-primary">Volver</a>
             <?php }?>
-            <!-- <a href="administrar-citas.php" class="btn btn-primary">Volver</a> -->
             <button type="submit" class="btn btn-success">Actualizar</button>
         </form>
     </div>
 </div>
 
-<!-- Footer section Begin -->
+
 <?php
 include "./includes/footer.php";
 ?>

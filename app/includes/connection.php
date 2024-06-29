@@ -1,33 +1,32 @@
 <?php
-    // Path to the .env file
+    // Ruta al archivo .env
     $envFilePath = __DIR__ . '/.env';
 
-    // Check if the .env file exists
+    // verificar si el archivo .env existe
     if (file_exists($envFilePath)) {
-        // Read the content of the .env file
+        // Leer el contenido del archivo .env
         $envContent = file_get_contents($envFilePath);
 
-        // Split the content into lines
+        // Separar el contenido por lineas
         $lines = explode(PHP_EOL, $envContent);
 
-        // Iterate over each line
+        // Iterar cada linea en el archivo
         foreach ($lines as $line) {
-            // Split the line into variable name and value
+            // Separar el contenido en nombre y valor
             $parts = explode('=', $line, 2);
             if (count($parts) === 2) {
-                // Assign the environment variable if the format is valid
                 $_ENV[$parts[0]] = trim($parts[1]);
             }
         }    
     } else {
-        // The .env file does not exist, handle the error as needed
-        echo "Error: The .env file does not exist";
+        // Manejar errores
+        echo "Error: El archivo .env no existe en la ruta espesificada";
     }
 
-    // Connection variables
+    // Variables de coneccion
     $dbserver = "localhost";
     $dbuser = "root";
-    // Access the DB_PASSWORD environment variable
+    // Asignar la contraseña desde el archivo .env
     $dbpassword = $_ENV['DB_PASSWORD'];
     $dbname = "neogymnasion";
 

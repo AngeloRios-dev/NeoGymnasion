@@ -1,10 +1,8 @@
 <?php
-    // session_start();
+    $tituloPagina = "Ingresar";
     include "./includes/header.php";
 ?>
 
-
-    <!-- Login form Begin -->
     <section class="container my-5 py-5 bg-light">
         <div class="row">
             <h2 class="text-center fw-bold my-5">Iniciar Sesi&oacute;n</h2>
@@ -41,9 +39,9 @@
                   </form>
             </div>
         </div>
-    </section> <!-- Login form End -->
+    </section>
 
-<!-- Footer section Begin -->
+
 <?php
     include $includesPath . "/footer.php";
 ?>

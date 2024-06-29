@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Borrar Cita";
 include "./includes/header.php";
 
 // Verifica si se ha enviado el ID de la cita a eliminar
@@ -35,7 +36,6 @@ if (!$appointment) {
     exit();
 }
 
-// Muestra el formulario de confirmación para eliminar la cita
 ?>
 <section class="d-flex align-items-center min-vh-100">
     <div class="container">

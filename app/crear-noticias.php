@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
     include "./includes/connection.php";
     include "./includes/req_admin.php";
 
@@ -26,10 +29,6 @@
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);
         }
-        // $target_dir = "uploads/";
-        // if (!is_dir($target_dir)) {
-        //     mkdir($target_dir, 0777, true);
-        // }
     
         // Manejo del archivo de imagen
         $news_img = basename($_FILES['news_img']['name']);

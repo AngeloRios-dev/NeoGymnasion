@@ -1,4 +1,5 @@
 <?php
+$tituloPagina = "Crear Cita";
 include "./includes/header.php";
 include "./includes/redirect.php";
 
@@ -99,7 +100,7 @@ $user_name = trim($login_mail);
     </div>
 </div>
 
-<!-- Footer section Begin -->
+<!-- Insertar Footer -->
 <?php
 include "./includes/footer.php";
 ?>
@@ -124,12 +125,12 @@ function searchUserByEmail() {
                 if (response.success) {
                     userFullNameLabel.textContent = response.data.first_names + ' ' + response.data.last_names;
                     userEmailInput.value = response.data.email;
-                    fkSearchedUserId.value = response.data.user_id; // Asigna el ID del usuario buscado al campo oculto
+                    fkSearchedUserId.value = response.data.user_id; 
                     userInfoDiv.innerHTML = '';
                 } else {
                     userFullNameLabel.textContent = 'Usuario no encontrado';
                     userEmailInput.value = '';
-                    fkSearchedUserId.value = ''; // Limpia el ID del usuario buscado
+                    fkSearchedUserId.value = '';
                     userInfoDiv.innerHTML = '<div class="alert alert-danger">' + response.message + '</div>';
                 }
             }

@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Administrar Noticias";
     include "./includes/header.php";
     include "./includes/req_admin.php";
 
@@ -63,7 +64,7 @@
     }
 ?>
 
-<!-- Table to display news information Begin-->
+
 <div class="container py-5 my-5 bg-light">
     <div class="row align-items-center pt-5">
         <div class="col-md-6">
@@ -115,9 +116,9 @@
             </nav>
         <?php } ?>
     </div>
-</div> <!-- Table to display news information End-->
+</div> 
 
-<!-- Footer section Begin -->
+<!-- Insertar Footer -->
 <?php
     include $includesPath . "/footer.php";
 ?>

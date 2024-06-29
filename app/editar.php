@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Editar Usuario";
     include "./includes/header.php";
     include 'editar-usuario.php';
 
@@ -19,8 +20,6 @@
     unset($_SESSION['errors']);
 ?>
 
-
-    <!-- Registration form Begin -->
     <section class="container my-5 py-5 bg-light">
         <div class="row">
             <h2 class="text-center fw-bold my-5 text-danger">Editar Usuario</h2>
@@ -146,10 +145,9 @@
             </fieldset>
             
           </form>
-    </section> <!-- Registration form End -->
+    </section> 
 
     
-<!-- Footer section Begin -->
 <?php
     include $includesPath . "/footer.php";
 ?>

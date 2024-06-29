@@ -1,4 +1,5 @@
 <?php
+$tituloPagina = "Borrar Usuario";
 include "./includes/header.php";
 
 // Verifica si se ha enviado el ID del usuario a eliminar
@@ -24,7 +25,6 @@ $user_fields = [
     "Fecha de nacimiento" => "birth_date",
 ];
 
-// Muestra el formulario de confirmación para eliminar el usuario
 ?>
 <section class="d-flex align-items-center min-vh-100">
     <div class="container">

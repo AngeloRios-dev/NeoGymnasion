@@ -1,6 +1,7 @@
 <?php
+    $tituloPagina = "Detalles del Usuario";
     include "./includes/header.php";
-    include "redirect.php";
+    include "./includes/redirect.php";
     if (!isset($_GET["id"]) || empty($_GET["id"]) || !is_numeric($_GET["id"])) {
         header("Location:administrar-usuarios.php");
     }
@@ -13,7 +14,6 @@
     $user_login = mysqli_fetch_assoc($login_data);
 ?>
 
-        <!-- Table to display user information Begin-->
     <div class="container py-5 my-5">
         <div class="row py-5">
             <table class="table table-striped text-dark">
@@ -73,10 +73,8 @@
                 </div>
             </div>
         </div>
-    </div> <!-- Table to display user information End-->
+    </div>
 
-    
-<!-- Footer section Begin -->
 <?php
     include $includesPath . "/footer.php";
 ?>

@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Administrar Usuarios";
     include "./includes/header.php";
     include "./includes/req_admin.php";
     $users = mysqli_query($conn, "SELECT user_id FROM users_data");
@@ -29,9 +30,6 @@
 
 ?>
 
-
-
-    <!-- Table to display user information Begin-->
     <div class="container py-5 my-5 bg-light">
         <div class="row align-items-center pt-5">
             <div class="col-md-6">
@@ -83,10 +81,10 @@
                 </nav>
             <?php } ?>
         </div>
-    </div> <!-- Table to display user information End-->
+    </div>
 
     
-<!-- Footer section Begin -->
+<!-- Insertar Footer -->
 <?php
     include $includesPath . "/footer.php";
 ?>

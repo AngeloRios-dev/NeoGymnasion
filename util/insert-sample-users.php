@@ -1,7 +1,7 @@
 <?php
 require_once '../app/includes/connection.php';
 
-// Insert data into users_data table
+// Insertar datos en la tabla users_data 
 $insert_users = "INSERT INTO NeoGymnasion.users_data (first_names, last_names, email, phone, birth_date, u_address, gender)
     VALUES
         ('Juan', 'García', 'juan@example.com', '123456789', '1990-05-15', 'Calle Mayor 123, Madrid', 'M'),

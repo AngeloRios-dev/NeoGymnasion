@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Administrar Citas";
 include "./includes/header.php";
 include "./includes/req_admin.php";
 
@@ -61,7 +62,6 @@ if ($appointments_count > 0) {
 }
 ?>
 
-<!-- Table to display appointments information Begin-->
 <div class="container py-5 my-5 bg-light">
     <div class="row align-items-center pt-5">
         <div class="col-md-6">
@@ -118,9 +118,9 @@ if ($appointments_count > 0) {
             </nav>
         <?php } ?>
     </div>
-</div> <!-- Table to display appointments information End-->
+</div>
 
-<!-- Footer section Begin -->
+<!-- Insertar el Footer -->
 <?php
     include $includesPath . "/footer.php";
 ?>

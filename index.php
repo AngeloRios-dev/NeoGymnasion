@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Bienvenido";
     include "app/includes/header.php";
 ?>
 

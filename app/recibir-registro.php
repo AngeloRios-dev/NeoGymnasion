@@ -28,7 +28,7 @@ function isChecked($field, $value) {
 
 
 function checkEmailExists($email) {
-    global $conn; // Debes asegurarte de que la conexión a la base de datos esté disponible dentro de la función
+    global $conn; 
 
     // Preparar la consulta para verificar si el correo electrónico existe
     $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM users_data WHERE email = ?");

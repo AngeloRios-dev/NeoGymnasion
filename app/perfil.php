@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Perfil de Usuario";
     include "includes/header.php";
 
     $username = $_SESSION["logged"]["username"];
@@ -20,8 +21,6 @@
 
 ?>
 
-
-    <!-- Profile section begin -->
     <section class="bg-dark">
         <div class="container my-5 py-md-5">
             <div class="row">
@@ -79,13 +78,7 @@
 
         </div>
     </section>
-    <!-- Profile section end -->
 
-
-
-    
-
-<!-- Footer section Begin -->
 <?php
     include $includesPath . "/footer.php";
 ?>

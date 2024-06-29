@@ -1,11 +1,11 @@
 <?php
+    $tituloPagina = "Pagina de Registro";
     include "./includes/header.php";
     include 'recibir-registro.php';
 
 
 ?>
   
-  <!-- Registration form Begin -->
     <section class="container my-5 py-5 bg-light">
         <div class="row">
             <h2 class="text-center fw-bold my-5">Formulario de Registro</h2>
@@ -137,10 +137,8 @@
             </fieldset>
             
           </form>
-    </section> <!-- Registration form End -->
+    </section> 
 
-    
-<!-- Footer section Begin -->
 <?php
     include $includesPath . "/footer.php";
 ?>

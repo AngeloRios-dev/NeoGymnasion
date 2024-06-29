@@ -17,9 +17,9 @@
             </div>
         </div>
     </footer>
-    <!-- Footer section End -->
+    <!-- Fin de la seccion Footer -->
 
-    <!-- Loading Boostrap JS bundle -->
+    <!-- Cargar Boostrap JS bundle -->
     <script src="<?php echo $resourcesPath . "/js/bootstrap.bundle.js"; ?>"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Crea Nueva Noticia";
     include "./includes/header.php";
     include "./includes/req_admin.php";
 ?>
@@ -45,9 +46,6 @@
         </div>
     </div>
     
-
-
-<!-- Footer section Begin -->
 <?php
     include "./includes/footer.php";
 ?>

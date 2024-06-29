@@ -25,7 +25,7 @@ function getRadio($data, $field, $value) {
 }
 
 function checkEmailExists($email) {
-    global $conn; // Asegura que la conexión a la base de datos esté disponible dentro de la función
+    global $conn; 
     $user_id = $_POST["user_id"];
 
     // Preparar la consulta para verificar si el correo electrónico existe

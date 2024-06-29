@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Detalles de la Noticia";
     include "./includes/header.php";
     include "./includes/redirect.php";
 

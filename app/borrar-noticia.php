@@ -1,4 +1,5 @@
 <?php
+    $tituloPagina = "Borrar Noticia";
 include "./includes/header.php";
 
 // Función para verificar la existencia de la noticia

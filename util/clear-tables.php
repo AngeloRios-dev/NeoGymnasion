@@ -2,7 +2,7 @@
 
 require_once '../app/includes/connection.php';
 
-// Truncate tables to remove all existing data
+// Truncate tablas para borrar datos existentes
 mysqli_query($conn, "SET FOREIGN_KEY_CHECKS = 0");
 $truncate_users_data = "TRUNCATE TABLE NeoGymnasion.users_data";
 $truncate_users_login = "TRUNCATE TABLE NeoGymnasion.users_login";
