@@ -1,7 +1,10 @@
--- Create database NeoGymnasion if it does not exist
+-- Crear base de datos NeoGymnasion si no existe
 CREATE DATABASE IF NOT EXISTS NeoGymnasion;
 
--- Create table user_data to store user information
+-- Seleccionar la base de datos para usar
+USE NeoGymnasion;
+
+-- Crear la tabla users_data para almacenar información del usuario.
 CREATE TABLE NeoGymnasion.users_data (
     user_id INT NOT NULL AUTO_INCREMENT,
     first_names VARCHAR(100) NOT NULL,
@@ -14,7 +17,7 @@ CREATE TABLE NeoGymnasion.users_data (
     PRIMARY KEY (user_id)
 );
 
--- Create table users_login to manage logins
+-- Crear la tabla users_login para administrar los inicios de sesión.
 CREATE TABLE NeoGymnasion.users_login (
     login_id INT NOT NULL AUTO_INCREMENT,
     fk_user_id INT NOT NULL UNIQUE,
@@ -26,7 +29,7 @@ CREATE TABLE NeoGymnasion.users_login (
     FOREIGN KEY (fk_user_id) REFERENCES users_data (user_id)
 );
 
--- Create table to store information about appointments
+-- Crear tabla para almacenar información sobre citas.
 CREATE TABLE NeoGymnasion.appointments (
     appointment_id INT NOT NULL AUTO_INCREMENT,
     fk_user_id INT NOT NULL,
@@ -37,7 +40,7 @@ CREATE TABLE NeoGymnasion.appointments (
     FOREIGN KEY (fk_user_id) REFERENCES users_data (user_id)
 );
 
--- Create table to store information about the news
+-- Crear tabla para almacenar información sobre las noticias.
 CREATE TABLE NeoGymnasion.news (
     news_id INT NOT NULL AUTO_INCREMENT,
     news_title VARCHAR(100) NOT NULL UNIQUE,
