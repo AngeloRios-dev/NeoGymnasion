@@ -24,11 +24,10 @@
     }
 
     // Variables de coneccion
-    $dbserver = "localhost";
-    $dbuser = "root";
-    // Asignar la contraseña desde el archivo .env
+    $dbserver = $_ENV['DB_SERVER'];
+    $dbuser = $_ENV['DB_USER'];
     $dbpassword = $_ENV['DB_PASSWORD'];
-    $dbname = "neogymnasion";
+    $dbname = $_ENV['DB_NAME'];
 
     $conn = mysqli_connect($dbserver, $dbuser, $dbpassword, $dbname);
     if (!$conn){

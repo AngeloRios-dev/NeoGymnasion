@@ -1,32 +1,5 @@
 <?php
-// Funcion para cargar datos del archivo .env
-function loadEnv($filePath) {
-    if (!file_exists($filePath)) {
-        die("Error: The .env file does not exist");
-    }
-    
-    $envContent = file_get_contents($filePath);
-    $lines = explode(PHP_EOL, $envContent);
-
-    foreach ($lines as $line) {
-        $parts = explode('=', $line, 2);
-        if (count($parts) === 2) {
-            $_ENV[$parts[0]] = trim($parts[1]);
-        }
-    }
-}
-
-// Cargar variables
-$envFilePath = __DIR__ . '/.env';
-loadEnv($envFilePath);
-
-// Variables de coneccion
-$dbserver = "localhost";
-$dbuser = "root";
-$dbpassword = $_ENV['DB_PASSWORD'] ?? '';
-
-$conn = new mysqli($dbserver, $dbuser, $dbpassword);
-
+require_once '../app/includes/connection.php';
 
 function executeQuery($conn, $query, $successMessage) {
     // Verificar que la conneccion sea exitosa
