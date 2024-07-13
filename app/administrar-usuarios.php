@@ -36,7 +36,7 @@
                 <h2 class="fw-bold text-danger">Administrar Usuarios</h2>
             </div>
             <div class="col-md-6 text-end">
-                <a href="crear-usuario.php" class="btn btn-primary">Crear Usuario</a>
+                <a href="registro.php" class="btn btn-primary">Crear Usuario</a>
             </div>
         </div>
         <div class="row py-5">
