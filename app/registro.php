@@ -8,7 +8,17 @@
   
     <section class="container my-5 py-5 bg-light">
         <div class="row">
-            <h2 class="text-center fw-bold my-5">Formulario de Registro</h2>
+            <h2 class="text-center fw-bold my-5">
+                
+                <?php
+                    if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin")  {
+                        echo "Registrar Usuario";
+                    } else {
+                        echo "Formulario de Registro";
+                    }
+                ?>
+
+            </h2>
                 <?php
                     if (isset($_SESSION['success_message'])) {
                         echo "<div class='alert alert-success text-center'>"."{$_SESSION['success_message']}"."</div>";
