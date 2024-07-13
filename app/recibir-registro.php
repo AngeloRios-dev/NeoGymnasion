@@ -5,6 +5,17 @@ if (session_status() == PHP_SESSION_NONE) {
 include 'includes/connection.php';
 $errors = array();
 
+function redirect($url) {
+    if (headers_sent()) {
+        // Si las cabeceras ya han sido enviadas, utiliza un redireccionamiento de JavaScript como fallback
+        echo "<script>window.location.href='$url';</script>";
+    } else {
+        // Redirigir utilizando la cabecera de HTTP
+        header("Location: $url");
+        exit();
+    }
+}
+
 function showErrors($errors, $field) {
     if (isset($errors[$field]) && !empty($field)) {
         return '<div class="alert alert-danger">'.$errors[$field].'</div>';
@@ -157,7 +168,7 @@ if(isset($_POST["registrarse"])){
             $_SESSION['success_message'] = "Registro exitoso.";
 
             // Redirigir a la página de registro
-            header("Location: registro.php");
+            redirect("registro.php");
             exit();
 
         } catch (Exception $e) {
