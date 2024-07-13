@@ -44,7 +44,11 @@ function checkEmailExists($email) {
 
 if(isset($_POST["actualizar"])) {
     // Comprobar campos obligatorios
-    $required_fields = array("first_names", "last_names", "email", "phone", "birth_date", "u_address", "radio_gender", "radio_role");
+    $required_fields = array("first_names", "last_names", "email", "phone", "birth_date", "u_address", "radio_gender");
+    if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin") {
+        $required_fields[] = "radio_role";
+    }
+
     foreach($required_fields as $field) {
         if(empty($_POST[$field])) {
             $errors[$field] = ucfirst(str_replace("_", " ", $field)) . " es obligatorio.";
@@ -68,7 +72,7 @@ if(isset($_POST["actualizar"])) {
     // Validar correo electrónico
     if(!empty($_POST["email"]) && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         if (checkEmailExists($_POST["email"])) {
-            $errors["email"] = "Ya existe una cuenta con ese correo {$email}.";
+            $errors["email"] = "Ya existe una cuenta con ese correo.";
         }
     } else {
         $errors["email"] = "La dirección de correo electrónico no es válida.";
@@ -102,11 +106,13 @@ if(isset($_POST["actualizar"])) {
         $errors["radio_gender"] = "El género es obligatorio.";
     }
 
-    // Validar tipo de usuario
-    if(!empty($_POST["radio_role"])) {
-        // Tipo de usuario válido
-    } else {
-        $errors["radio_role"] = "El tipo de usuario es obligatorio.";
+    // Validar tipo de usuario (solo para admin)
+    if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin") {
+        if(!empty($_POST["radio_role"])) {
+            // Tipo de usuario válido
+        } else {
+            $errors["radio_role"] = "El tipo de usuario es obligatorio.";
+        }
     }
 
     // Validar contraseñas solo si los campos no están vacíos
@@ -129,10 +135,12 @@ if(isset($_POST["actualizar"])) {
             $stmt1->bind_param("sssssssi", $_POST["first_names"], $_POST["last_names"], $_POST["email"], $_POST["phone"], $_POST["birth_date"], $_POST["u_address"], $_POST["radio_gender"], $_POST["user_id"]);
             $stmt1->execute();
 
-            // Actualizar rol de usuario en users_login
-            $stmt3 = $conn->prepare("UPDATE NeoGymnasion.users_login SET u_role=?, username=? WHERE fk_user_id=?");
-            $stmt3->bind_param("ssi", $_POST["radio_role"], $_POST["email"], $_POST["user_id"]);
-            $stmt3->execute();
+            // Actualizar rol de usuario en users_login (solo para admin)
+            if (isset($_SESSION["logged"]) && isset($_SESSION["logged"]["u_role"]) && $_SESSION["logged"]["u_role"] === "admin") {
+                $stmt3 = $conn->prepare("UPDATE NeoGymnasion.users_login SET u_role=?, username=? WHERE fk_user_id=?");
+                $stmt3->bind_param("ssi", $_POST["radio_role"], $_POST["email"], $_POST["user_id"]);
+                $stmt3->execute();
+            }
 
             // Actualizar contraseña solo si ha sido proporcionada
             if (!empty($hashed_password)) {
@@ -164,9 +172,11 @@ if(isset($_POST["actualizar"])) {
         $_SESSION['errors'] = $errors;
         $_SESSION['fail_message'] = "Error: No se ha podido actualizar los datos.";
 
+        // Añadir errores a sesion para depuracion
+        $_SESSION['debug_errors'] = $errors;
+
         header("Location: editar.php?id=" . $_POST["user_id"]);
         exit();
     }
 }
 ?>
-
